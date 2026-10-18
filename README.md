@@ -26,6 +26,7 @@ ThinkPaint 是面向 Android 和 Windows 的开源线索板项目，在可向四
 
 ## 开发状态
 
+当前尚在开发构建中……
 文档已建立初始提交，十个模块分支已创建并推送。各类别使用独立负责对话和工作目录，通过公共接口增量集成；当前模块任务仅做方案和接口准备。主技术路线与真实代码目录在获授权的工程装配工作中确定。
 
 远程仓库：[ENekoORG/ThinkPaint](https://github.com/ENekoORG/ThinkPaint)。
