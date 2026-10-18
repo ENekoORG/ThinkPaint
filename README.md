@@ -21,10 +21,11 @@ ThinkPaint 是面向 Android 和 Windows 的开源线索板项目，在可向四
 - [模块开发计划](docs/DEVELOPMENT_PLAN.md)：每类独立开发、分支和联合验收安排。
 - [模块协作约定](docs/MODULE_CONTRACTS.md)：接口责任和跨模块数据操作。
 - [任务交接](docs/TASK_HANDOFF.md)：模块任务卡和发给开发对话的说明。
+- [十模块可复制任务说明](docs/MODULE_TASK_PROMPTS.md)：每个模块的完整消息与任务卡入口。
 - [当前进度](PROGRESS.md)与[工作约定](AGENTS.md)。
 
 ## 开发状态
 
-当前处于需求分类与模块规划阶段。各类别使用独立负责对话、模块分支和工作目录，通过公共接口增量集成。主技术路线与真实代码目录在获授权的工程装配工作中确定。
+文档已建立初始提交，十个模块分支已创建并推送。各类别使用独立负责对话和工作目录，通过公共接口增量集成；当前模块任务仅做方案和接口准备。主技术路线与真实代码目录在获授权的工程装配工作中确定。
 
 远程仓库：[ENekoORG/ThinkPaint](https://github.com/ENekoORG/ThinkPaint)。
