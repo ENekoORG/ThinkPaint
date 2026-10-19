@@ -4,6 +4,16 @@
 
 本模块负责应用外壳、工具面板、标准输入事件、快捷键路由、主题外观和设备适配，为各功能模块提供一致的双端使用环境。
 
+## 代码目录与独立设计
+
+统一采用 Flutter + Dart。计划代码目录为 `packages/thinkpaint_platform/`，公开入口为 `lib/thinkpaint_platform.dart`，私有实现放在 `lib/src/`，本模块验证放在 `test/`。这些代码目录在后续工程任务中建立。
+
+本模块独立设计自己的页面、面板、对话框、工具与局部状态，设计资料按需要放在 `docs/design/M10/`。M10 统一主题、外壳、导航与焦点；模块通过页面、面板、工具和设置贡献接入，具体布局和交互由本模块细化并审阅。
+
+静态依赖只使用两个共享协议包和本模块依赖，功能包之间不互相 import。提供：PlatformInputPort、ToolRuntimePort、SystemAccessPort、SettingsPort、AppShellFactory。消费：各模块 UI/工具贡献、焦点与文字状态、当前画板与保存通知。
+
+依据：[技术决定](../architecture/PLATFORM_DECISION.md)、[工程结构](../architecture/PROJECT_STRUCTURE.md)、[共享接口](../architecture/SHARED_CONTRACTS.md)、[模块依赖](../architecture/MODULE_DEPENDENCIES.md)、[独立界面设计](../architecture/UI_DESIGN_GUIDE.md)。
+
 ## 职责边界与协作接口
 
 M10 提供页面容器、工具和面板注册、焦点与快捷键上下文、标准笔鼠触控事件、设备能力、系统键盘和应用生命周期通知。管理主页的内容和画板目录属于 M01，画板视图与导航属于 M04，M10 负责承载与平台连接。

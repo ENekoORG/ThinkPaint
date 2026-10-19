@@ -2,6 +2,16 @@
 
 模块分支：`module/storage`。原需求来源：F12 的保存恢复部分、F13，协作支持 F02、F06、F07。
 
+## 代码目录与独立设计
+
+统一采用 Flutter + Dart。计划代码目录为 `packages/thinkpaint_storage/`，公开入口为 `lib/thinkpaint_storage.dart`，私有实现放在 `lib/src/`，本模块验证放在 `test/`。这些代码目录在后续工程任务中建立。
+
+本模块独立设计自己的页面、面板、对话框、工具与局部状态，设计资料按需要放在 `docs/design/M09/`。M10 统一主题、外壳、导航与焦点；模块通过页面、面板、工具和设置贡献接入，具体布局和交互由本模块细化并审阅。
+
+静态依赖只使用两个共享协议包和本模块依赖，功能包之间不互相 import。提供：AssetStorePort、ProjectRepositoryPort、CatalogRepositoryPort、SaveCoordinatorPort、ExportPort。消费：SystemAccessPort、DocumentReadPort、一致内容与视图快照、内容编解码、SceneRenderPort（导出器阶段）。
+
+依据：[技术决定](../architecture/PLATFORM_DECISION.md)、[工程结构](../architecture/PROJECT_STRUCTURE.md)、[共享接口](../architecture/SHARED_CONTRACTS.md)、[模块依赖](../architecture/MODULE_DEPENDENCIES.md)、[独立界面设计](../architecture/UI_DESIGN_GUIDE.md)。
+
 ## 职责和接口
 
 本模块负责项目容器、资源文件、格式版本、读写完整性、自动保存、备份恢复、双端传递和图片文档导出。向 M01 提供实际项目创建、打开、复制、回收和恢复服务，向内容模块提供资源接口。
