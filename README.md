@@ -15,6 +15,16 @@ ThinkPaint 是面向 Android 和 Windows 的开源线索板项目，在可向四
 9. [保存与导出](docs/modules/M09-storage.md)：项目文件、资源、恢复、双端传递和导出。
 10. [界面与设备适配](docs/modules/M10-platform.md)：外壳、输入、设置和外观。
 
+## 技术与工程
+
+统一采用 Flutter + Dart + 自定义绘制画布。工程规划为一个应用、两个共享协议包和十个模块包，各模块独立细化界面与功能并通过注册接入。
+
+- [技术路线决定](docs/architecture/PLATFORM_DECISION.md)
+- [工程结构与代码目录](docs/architecture/PROJECT_STRUCTURE.md)
+- [共享接口](docs/architecture/SHARED_CONTRACTS.md)
+- [十模块依赖](docs/architecture/MODULE_DEPENDENCIES.md)
+- [模块独立界面设计](docs/architecture/UI_DESIGN_GUIDE.md)
+
 ## 项目文档
 
 - [需求总览](docs/REQUIREMENTS.md)：功能分类、公共行为和原 17 项需求追溯。
@@ -26,6 +36,8 @@ ThinkPaint 是面向 Android 和 Windows 的开源线索板项目，在可向四
 
 ## 开发状态
 
-文档已建立初始提交，十个模块分支已创建并推送。各类别使用独立负责对话和工作目录，通过公共接口增量集成；当前模块任务仅做方案和接口准备。主技术路线与真实代码目录在获授权的工程装配工作中确定。
+当前尚在开发构建中……
+
+当前处于 Flutter 架构规划与模块独立设计阶段。十模块分支已建立，各类别使用独立对话和 worktree；计划代码目录与共享接口见架构文档，实际工程与功能按后续授权建立。
 
 远程仓库：[ENekoORG/ThinkPaint](https://github.com/ENekoORG/ThinkPaint)。

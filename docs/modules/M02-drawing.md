@@ -4,6 +4,16 @@
 
 需求总览见 [项目需求](../REQUIREMENTS.md)，共享约定见 [模块协作协议](../MODULE_CONTRACTS.md)，任务安排见 [开发计划](../DEVELOPMENT_PLAN.md)。
 
+## 代码目录与独立设计
+
+统一采用 Flutter + Dart。计划代码目录为 `packages/thinkpaint_drawing/`，公开入口为 `lib/thinkpaint_drawing.dart`，私有实现放在 `lib/src/`，本模块验证放在 `test/`。这些代码目录在后续工程任务中建立。
+
+本模块独立设计自己的页面、面板、对话框、工具与局部状态，设计资料按需要放在 `docs/design/M02/`。M10 统一主题、外壳、导航与焦点；模块通过页面、面板、工具和设置贡献接入，具体布局和交互由本模块细化并审阅。
+
+静态依赖只使用两个共享协议包和本模块依赖，功能包之间不互相 import。提供：LineGeometryPort、笔迹与线条内容/绘制/工具贡献。消费：PlatformInputPort、ViewportPort、EditorPort、DocumentReadPort、TextEditingFactory、RelationsPort。
+
+依据：[技术决定](../architecture/PLATFORM_DECISION.md)、[工程结构](../architecture/PROJECT_STRUCTURE.md)、[共享接口](../architecture/SHARED_CONTRACTS.md)、[模块依赖](../architecture/MODULE_DEPENDENCIES.md)、[独立界面设计](../architecture/UI_DESIGN_GUIDE.md)。
+
 ## 职责边界
 
 绘图模块决定轨迹如何形成笔迹或线形，如何响应压力，如何平滑、擦除和编辑路径。笔迹保留为可编辑数据，颜色、压力、粗细与路径共同参与保存和恢复。

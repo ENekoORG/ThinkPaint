@@ -2,6 +2,16 @@
 
 模块分支：`module/editing`。原需求来源：F08、F14、F12 的编辑撤销部分。
 
+## 代码目录与独立设计
+
+统一采用 Flutter + Dart。计划代码目录为 `packages/thinkpaint_editing/`，公开入口为 `lib/thinkpaint_editing.dart`，私有实现放在 `lib/src/`，本模块验证放在 `test/`。这些代码目录在后续工程任务中建立。
+
+本模块独立设计自己的页面、面板、对话框、工具与局部状态，设计资料按需要放在 `docs/design/M07/`。M10 统一主题、外壳、导航与焦点；模块通过页面、面板、工具和设置贡献接入，具体布局和交互由本模块细化并审阅。
+
+静态依赖只使用两个共享协议包和本模块依赖，功能包之间不互相 import。提供：DocumentReadPort、EditorPort、BoardSessionPort、EditRule、选择与排版界面贡献。消费：纯内容与扩展定义、几何查询、资源引用协议、ViewportPort（选择工具阶段）。
+
+依据：[技术决定](../architecture/PLATFORM_DECISION.md)、[工程结构](../architecture/PROJECT_STRUCTURE.md)、[共享接口](../architecture/SHARED_CONTRACTS.md)、[模块依赖](../architecture/MODULE_DEPENDENCIES.md)、[独立界面设计](../architecture/UI_DESIGN_GUIDE.md)。
+
 ## 职责和接口
 
 本模块维护对象身份、通用变换、层次和明确归属，负责选择、通用编辑、组合、主题区域、排版，以及跨模块编辑事务和撤销重做。提供对象注册与查询、归属校验、编辑命令、事务和变更通知。
