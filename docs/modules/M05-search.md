@@ -4,6 +4,16 @@
 
 本模块负责资料索引、查询、结果展示和定位请求。它读取各模块维护的真实资料，帮助找回已有内容；图片文字识别与自动云同步属于后续扩展。
 
+## 代码目录与独立设计
+
+统一采用 Flutter + Dart。计划代码目录为 `packages/thinkpaint_search/`，公开入口为 `lib/thinkpaint_search.dart`，私有实现放在 `lib/src/`，本模块验证放在 `test/`。这些代码目录在后续工程任务中建立。
+
+本模块独立设计自己的页面、面板、对话框、工具与局部状态，设计资料按需要放在 `docs/design/M05/`。M10 统一主题、外壳、导航与焦点；模块通过页面、面板、工具和设置贡献接入，具体布局和交互由本模块细化并审阅。
+
+静态依赖只使用两个共享协议包和本模块依赖，功能包之间不互相 import。提供：SearchPort、SearchPanelFactory。消费：DocumentReadPort、CatalogRepositoryPort、ProjectRepositoryPort、BoardNavigationPort、ImagesPort、ViewportPort、RelationsPort、内容资料提取。
+
+依据：[技术决定](../architecture/PLATFORM_DECISION.md)、[工程结构](../architecture/PROJECT_STRUCTURE.md)、[共享接口](../architecture/SHARED_CONTRACTS.md)、[模块依赖](../architecture/MODULE_DEPENDENCIES.md)、[独立界面设计](../architecture/UI_DESIGN_GUIDE.md)。
+
 ## 职责边界与协作接口
 
 M05 消费画板资料、对象文字、对象名称、图片备注、档案盒名称、来源、标签及状态等可检索资料，以及提交、撤销、重做、导入、恢复和删除产生的变化事件。资料的唯一有效来源仍由所属模块和 M09 的项目记录维护；搜索索引是可重建的数据，不能成为项目正文或对象关系的另一份编辑来源。

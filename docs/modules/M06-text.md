@@ -4,6 +4,16 @@
 
 本模块负责可编辑文字框、便签、文字样式、排版和中文输入。它也提供可复用的文字编辑交互，供其他模块编辑各自拥有的名称、备注和标签。
 
+## 代码目录与独立设计
+
+统一采用 Flutter + Dart。计划代码目录为 `packages/thinkpaint_text/`，公开入口为 `lib/thinkpaint_text.dart`，私有实现放在 `lib/src/`，本模块验证放在 `test/`。这些代码目录在后续工程任务中建立。
+
+本模块独立设计自己的页面、面板、对话框、工具与局部状态，设计资料按需要放在 `docs/design/M06/`。M10 统一主题、外壳、导航与焦点；模块通过页面、面板、工具和设置贡献接入，具体布局和交互由本模块细化并审阅。
+
+静态依赖只使用两个共享协议包和本模块依赖，功能包之间不互相 import。提供：TextEditingFactory、文字内容/布局/绘制贡献。消费：EditorPort、ViewportPort、ToolRuntimePort、SystemAccessPort、主题与键盘状态。
+
+依据：[技术决定](../architecture/PLATFORM_DECISION.md)、[工程结构](../architecture/PROJECT_STRUCTURE.md)、[共享接口](../architecture/SHARED_CONTRACTS.md)、[模块依赖](../architecture/MODULE_DEPENDENCIES.md)、[独立界面设计](../architecture/UI_DESIGN_GUIDE.md)。
+
 ## 职责边界与协作接口
 
 M06 提供文字对象的创建、显示、内容编辑、测量与编辑焦点状态，并通过共享编辑操作记录正式文字变化。文字对象接入 M07 的选择、变换与撤销事务、M04 的坐标和渲染、M09 的保存与导出，以及 M05 的文字检索。
