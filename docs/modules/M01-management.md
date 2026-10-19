@@ -4,6 +4,16 @@
 
 本模块负责应用主页和画板目录，组织创建、打开、切换、分类、复制、回收和项目导入。画板的图片、文字、笔迹与关系数据由相应编辑模块维护。
 
+## 代码目录与独立设计
+
+统一采用 Flutter + Dart。计划代码目录为 `packages/thinkpaint_management/`，公开入口为 `lib/thinkpaint_management.dart`，私有实现放在 `lib/src/`，本模块验证放在 `test/`。这些代码目录在后续工程任务中建立。
+
+本模块独立设计自己的页面、面板、对话框、工具与局部状态，设计资料按需要放在 `docs/design/M01/`。M10 统一主题、外壳、导航与焦点；模块通过页面、面板、工具和设置贡献接入，具体布局和交互由本模块细化并审阅。
+
+静态依赖只使用两个共享协议包和本模块依赖，功能包之间不互相 import。提供：BoardNavigationPort、ManagementPageFactory。消费：ProjectRepositoryPort、CatalogRepositoryPort、SaveCoordinatorPort、ViewportPort、ToolRuntimePort、SystemAccessPort、SearchPanelFactory、SettingsPort。
+
+依据：[技术决定](../architecture/PLATFORM_DECISION.md)、[工程结构](../architecture/PROJECT_STRUCTURE.md)、[共享接口](../architecture/SHARED_CONTRACTS.md)、[模块依赖](../architecture/MODULE_DEPENDENCIES.md)、[独立界面设计](../architecture/UI_DESIGN_GUIDE.md)。
+
 ## 职责边界与协作接口
 
 M01 提供画板列表资料、当前画板标识、打开或切换画板请求，以及目录变化通知。主页包含画板缩略图、名称、分类、收藏和最近打开入口，页面本身由 M01 维护；M10 提供承载页面的应用外壳和导航容器。

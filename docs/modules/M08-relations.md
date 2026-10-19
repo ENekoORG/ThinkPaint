@@ -4,6 +4,16 @@
 
 需求总览见 [项目需求](../REQUIREMENTS.md)，共享约定见 [模块协作协议](../MODULE_CONTRACTS.md)，任务安排见 [开发计划](../DEVELOPMENT_PLAN.md)。
 
+## 代码目录与独立设计
+
+统一采用 Flutter + Dart。计划代码目录为 `packages/thinkpaint_relations/`，公开入口为 `lib/thinkpaint_relations.dart`，私有实现放在 `lib/src/`，本模块验证放在 `test/`。这些代码目录在后续工程任务中建立。
+
+本模块独立设计自己的页面、面板、对话框、工具与局部状态，设计资料按需要放在 `docs/design/M08/`。M10 统一主题、外壳、导航与焦点；模块通过页面、面板、工具和设置贡献接入，具体布局和交互由本模块细化并审阅。
+
+静态依赖只使用两个共享协议包和本模块依赖，功能包之间不互相 import。提供：RelationsPort、MetadataPort、纯 EditRule、关系与资料界面贡献。消费：DocumentReadPort、EditorPort、LineGeometryPort、ViewportPort、TextEditingFactory。
+
+依据：[技术决定](../architecture/PLATFORM_DECISION.md)、[工程结构](../architecture/PROJECT_STRUCTURE.md)、[共享接口](../architecture/SHARED_CONTRACTS.md)、[模块依赖](../architecture/MODULE_DEPENDENCIES.md)、[独立界面设计](../architecture/UI_DESIGN_GUIDE.md)。
+
 ## 职责边界
 
 关系模块决定一条线连接哪个对象、端点如何跟随目标、对象变化时哪些关系受影响，以及如何查看和筛选关联资料。对象名称、来源、备注、日期、标签和状态采用统一资料结构，本模块提供资料编辑与关系查询行为。
