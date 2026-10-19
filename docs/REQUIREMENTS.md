@@ -1,8 +1,14 @@
 # ThinkPaint 功能分类与项目需求
 
-文档版本：0.2。更新日期：2026-10-18。
+文档版本：0.3。更新日期：2026-10-19。
 
 ThinkPaint 面向 Android 和 Windows，在可向四个方向持续扩展的画板上组织图片、文字、手绘和关系连线。需求按十个功能块组织，每个类别由独立开发对话负责，类别内部以细项领取和验收。
+
+## 统一技术与模块设计
+
+统一技术路线为 Flutter + Dart + 自定义绘制画布。十模块分别拥有自己的代码包、界面与功能设计，通过共享协议协作。具体目录和接口以 [工程结构](architecture/PROJECT_STRUCTURE.md)、[共享接口](architecture/SHARED_CONTRACTS.md)和[模块依赖](architecture/MODULE_DEPENDENCIES.md)为依据。
+
+各模块可以在自己的 `docs/design/Mxx/` 细化流程、原型与视觉稿，M10 统一主题、导航、焦点和外壳。设计方式见 [界面设计约定](architecture/UI_DESIGN_GUIDE.md)。
 
 ## 功能分类
 

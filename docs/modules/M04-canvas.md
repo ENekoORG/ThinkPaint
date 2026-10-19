@@ -2,6 +2,16 @@
 
 模块分支：`module/canvas`。原需求来源：F05、F11 的导航部分、F17 的画布呈现部分。
 
+## 代码目录与独立设计
+
+统一采用 Flutter + Dart。计划代码目录为 `packages/thinkpaint_canvas/`，公开入口为 `lib/thinkpaint_canvas.dart`，私有实现放在 `lib/src/`，本模块验证放在 `test/`。这些代码目录在后续工程任务中建立。
+
+本模块独立设计自己的页面、面板、对话框、工具与局部状态，设计资料按需要放在 `docs/design/M04/`。M10 统一主题、外壳、导航与焦点；模块通过页面、面板、工具和设置贡献接入，具体布局和交互由本模块细化并审阅。
+
+静态依赖只使用两个共享协议包和本模块依赖，功能包之间不互相 import。提供：ViewportPort、SceneRenderPort、画布与导航界面贡献。消费：DocumentReadPort、AssetStorePort、内容几何和绘制注册、PlatformInputPort、查看条件。
+
+依据：[技术决定](../architecture/PLATFORM_DECISION.md)、[工程结构](../architecture/PROJECT_STRUCTURE.md)、[共享接口](../architecture/SHARED_CONTRACTS.md)、[模块依赖](../architecture/MODULE_DEPENDENCIES.md)、[独立界面设计](../architecture/UI_DESIGN_GUIDE.md)。
+
 ## 职责和接口
 
 本模块负责画板坐标、可视区域、平移缩放、绘制调度、导航和内容模块接入。提供坐标转换、对象定位、视野查询、绘制注册及视图状态接口。
